@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Usuario
+from .serializers import UsuarioSerializer
 
-# Create your views here.
+
+class UsuarioList(generics.ListAPIView):
+    queryset = Usuario.objects.order_by('id')
+    serializer_class = UsuarioSerializer
